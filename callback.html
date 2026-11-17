@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>gtaVI_clips — connexion TikTok</title>
+<style>
+body{max-width:760px;margin:40px auto;padding:0 16px;font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;color:#1d1d1f;background:#fff}
+textarea{width:100%;box-sizing:border-box;font:13px monospace;padding:8px;border:1px solid #ccc;border-radius:6px}
+button,a.btn{display:inline-block;margin-top:8px;padding:8px 14px;border:0;border-radius:6px;background:#111;color:#fff;font:inherit;cursor:pointer;text-decoration:none}
+.muted{color:#666;font-size:14px}
+</style></head>
+<body>
+<h1>Connexion TikTok</h1>
+<p id="msg">Redirection vers ClipForge (dashboard local)…</p>
+<div id="manual" style="display:none">
+  <p>Si rien ne se passe, ouvre le dashboard ClipForge puis clique sur le bouton ci-dessous :</p>
+  <a class="btn" id="go" href="#">Terminer la connexion dans ClipForge</a>
+  <p class="muted" style="margin-top:20px">Ou copie cette URL et colle-la dans ClipForge (page « Connecter TikTok » ou <code>python -m clipforge tiktok-auth</code>) :</p>
+  <textarea id="url" rows="3" readonly></textarea>
+  <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('url').value).then(()=>this.textContent='Copié ✔')">Copier l'URL</button>
+</div>
+<script>
+// Page de retour OAuth (redirect_uri déclarée dans l'app TikTok). Aucune donnée n'est envoyée à un serveur :
+// le code d'autorisation est seulement transmis au dashboard ClipForge qui tourne sur ton propre PC.
+var q = window.location.search;
+var dashboard = "http://127.0.0.1:8000/tiktok/callback" + q;
+document.getElementById("url").value = window.location.href;
+document.getElementById("go").href = dashboard;
+if (q.indexOf("code=") === -1 && q.indexOf("error=") === -1) {
+  document.getElementById("msg").textContent = "Aucun code d'autorisation dans l'adresse.";
+} else {
+  // visible immédiatement : si le dashboard n'est pas lancé, le bouton « Retour » du navigateur ramène ici
+  document.getElementById("manual").style.display = "block";
+  setTimeout(function () { window.location.href = dashboard; }, 800);
+}
+</script>
+</body></html>
