@@ -12,14 +12,17 @@ footer{margin-top:40px;font-size:14px;color:#666}</style></head>
 <p>When the account owner authorizes the app, it receives from TikTok:</p>
 <ul><li>basic account information (<code>user.info.basic</code>: open ID, display name);</li>
 <li>an access token and a refresh token, used only to upload videos to the account's drafts (<code>video.upload</code>).</li></ul>
+<h2>2b. Data accessed from YouTube (YouTube API Services)</h2>
+<p>When the channel owner authorizes the app with their Google account, it receives an access token and a refresh token with the single permission <code>youtube.upload</code>, used only to upload Shorts to that channel. The app does not read, store or share any other Google or YouTube data.</p>
+<p>gtaVI_clips uses YouTube API Services. By using it, you agree to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>, and Google's processing is governed by the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. Access can be revoked at any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</p>
 <h2>3. How data is used</h2>
-<p>This data is used exclusively to upload clips to the authorized account's TikTok drafts. It is never sold, rented or shared with third parties, and never used for advertising or profiling.</p>
+<p>This data is used exclusively to upload clips to the authorized account's TikTok drafts and YouTube channel. It is never sold, rented or shared with third parties, and never used for advertising or profiling.</p>
 <h2>4. Storage and security</h2>
-<p>Tokens are stored only on the operator's local computer, in a file with restricted permissions. No TikTok data is sent to any server other than TikTok's own API.</p>
+<p>Tokens are stored only on the operator's local computer, in a file with restricted permissions. No TikTok or Google data is sent to any server other than TikTok's and Google's own APIs.</p>
 <h2>5. Video processing</h2>
-<p>Videos processed by the app are the operator's own or authorized content. To select highlights, the text transcript of a video may be sent to an AI provider (Anthropic API); no TikTok account data is included in this processing.</p>
+<p>Videos processed by the app are the operator's own or authorized content. To select highlights, the text transcript of a video may be sent to an AI provider (Anthropic API); no TikTok or Google account data is included in this processing.</p>
 <h2>6. Retention and deletion</h2>
-<p>Data is kept only as long as the app is authorized. Revoking access in the TikTok app (<i>Settings and privacy → Security → Manage app permissions</i>) invalidates the tokens; the local files can be deleted at any time.</p>
+<p>Data is kept only as long as the app is authorized. Revoking access in the TikTok app (<i>Settings and privacy → Security → Manage app permissions</i>) invalidates the tokens (for YouTube: myaccount.google.com/permissions); the local files can be deleted at any time.</p>
 <h2>7. Children</h2>
 <p>The app is not intended for children and does not knowingly process data from minors.</p>
 <h2>8. Contact</h2>
